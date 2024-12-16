@@ -9,7 +9,6 @@ namespace Meals_API.Controllers
     public class MealController : ControllerBase
     {
         private MealRetriever? _mealRetriever;
-        private static int _idChiamata = 0;
 
         [HttpGet("random")]
         public async Task<ActionResult> GetRandomMeal([FromServices] MealService mealService)
@@ -37,10 +36,6 @@ namespace Meals_API.Controllers
                     };
                     await mealService.Create(successfulSearch);
                 }
-
-                _idChiamata++;
-                Console.WriteLine("\nChiamata API " + _idChiamata);
-                Console.WriteLine(meal);
 
                 return Ok(meal);
             }
